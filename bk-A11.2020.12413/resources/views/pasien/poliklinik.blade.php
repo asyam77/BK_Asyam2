@@ -47,26 +47,49 @@
                     <h6><center>Ambil Jadwal Periksa</center></h6>
                   </div>
 
-                  <form action="{{ route('submit-daftar-poli') }}" method="GET" class="bg-white p-8 rounded-lg shadow-md">
+                  <form action="{{ route('pasien-addDaftarPoli') }}" method="POST" class="bg-white p-8 rounded-lg shadow-md">
                     @csrf
                     <div class="mb-4">
-                        <label for="id_jadwal" class="block text-sm font-medium text-gray-700 mb-1" style="margin: 0.5rem;">Pilih Jadwal:</label>
-                        <select name="id_jadwal" class="p-2 border rounded-md" style="padding: 0.5rem; border-radius: 0.375rem; margin: 0.5rem;">
-                            <option disabled selected>Pilih Jadwal</option>
-                            @foreach($jadwal as $jp)
-                                <option value="{{ $jp->id }}">{{ $jp->hari }}, {{ $jp->jam_mulai }} - {{ $jp->jam_selesai }}</option>
-                            @endforeach
-                        </select>
+                        <label for="nama" class="block text-sm font-medium text-gray-700 mb-1" style="margin: 0.5rem;">No. Rekam Medis:</label>
+                          <h4></h4>
+                          {{-- @foreach ($daftarPolis as $dp)
+                                <p>{{ $dp->no_antrian }}</p>
+                          @endforeach --}}
+                        <b class="w-full p-2 border rounded-md" style="padding: 0.5rem; border-radius: 0.375rem; margin: 0.5rem;">Nomor antrian terbaru anda : <b style="color: black">
+                          @if($daftarPolis != null)
+                              @if($daftarPolis->no_antrian != null)
+                                  {{$daftarPolis->no_antrian}}
+                              @endif
+                          @else
+                          Belum dapat nomor antrian
+                          @endif
+                        </b></b>
                     </div>
                     <div class="mb-4">
+                        <label for="jadwal_periksa" class="block text-sm font-medium text-gray-700 mb-1" style="margin: 0.5rem;">Pilih jadwal, dokter, dan tempat untuk daftar periksa:</label>
+                        <select name="jadwal_periksa" id="jadwal_periksa" class="p-2 border rounded-md" style="padding: 0.5rem; border-radius: 0.375rem; margin: 0.5rem;">
+                          <option value="" disabled selected>Hari, jam | Dokter | Tempat</option>
+                          @foreach($jadwalPeriksas as $jp)
+                              <option value="{{ $jp->id }}">{{ $jp->hari }}, {{$jp->jam_mulai}}-{{$jp->jam_selesai}} | {{$jp->dokter->nama}} | {{$jp->dokter->poli->nama_poli}}</option>
+                          @endforeach
+                        </select>                      
+                    </div>
+                    {{-- <div class="mb-4">
+                        <label for="id_jadwal" class="block text-sm font-medium text-gray-700 mb-1" style="margin: 0.5rem;">Pilih Jadwal:</label>
+                        <select name="id_jadwal" id="id_jadwal" class="p-2 border rounded-md" style="padding: 0.5rem; border-radius: 0.375rem; margin: 0.5rem;">
+                          @foreach($jadwalPeriksas as $jp)
+                            <option>{{ $jp->hari }}, {{$jp->jam_mulai}} - {{$jp->jam_selesai}}</option>
+                          @endforeach
+                        </select> 
+                    </div> --}}
+                    <div class="mb-4">
                         <label for="keluhan" class="block text-sm font-medium text-gray-700 mb-1" style="margin: 0.5rem;">Keluhan:</label>
-                        <input name="keluhan" id="keluhan" class="w-full p-2 border rounded-md" style="width: calc(100% - 1rem); padding: 0.5rem; border-radius: 0.375rem; margin: 0.5rem;"/>
+                        <textarea name="keluhan" id="keluhan" class="w-full p-2 border rounded-md" style="width: calc(100% - 1rem); padding: 0.5rem; border-radius: 0.375rem; margin: 0.5rem;"></textarea>
                     </div>
                     <div class="mb-4 flex justify-center">
                         <button type="submit" class="btn btn-success shadow-soft-2xl rounded-lg bg-dark stroke-0 text-center xl:p-2.5" style="background-image: linear-gradient(to bottom right, #ef0488, #8624c2); color:white;">Ambil Antrian</button>
                     </div>
-                </form>
-                
+                  </form>
                 
                 </div>
             </div>

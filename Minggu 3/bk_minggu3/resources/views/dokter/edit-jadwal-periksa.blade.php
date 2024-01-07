@@ -39,35 +39,84 @@
       
           <!-- cards -->
           <div class="w-full px-6 py-6 mx-auto">
-      
+            
             {{-- Table --}}
             <div class="w-full max-w-full px-3 mt-0 mb-6">
                 <div class="border-black/12.5 shadow-soft-xl relative flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
                   <div class="border-black/12.5 mb-0 rounded-t-2xl border-b-0 border-solid bg-white p-6 pb-0 mb-4">
-                    <h6><center>Ambil Jadwal Periksa</center></h6>
+                    <h6><center>Edit Jadwal Periksa</center></h6>
                   </div>
-
-                  <form action="{{ route('submit-daftar-poli') }}" method="GET" class="bg-white p-8 rounded-lg shadow-md">
+                  <center>
+                    @if($errors->any())
+                      <div>
+                        @foreach($errors->all() as $error)
+                          <p style="color: red">{{ $error }}</p>
+                        @endforeach
+                      </div>
+                    @endif
+                    @if(session('success'))
+                      <div>
+                        <p style="color: blue">{{ session('success') }}</p>
+                      </div>
+                    @endif
+                  </center>
+                  <form action="{{ route('dokter-update-jadwal-periksa', $jadwalPeriksa->id) }}" method="POST" class="bg-white p-8 rounded-lg shadow-md">
                     @csrf
+                    @method('PUT')
                     <div class="mb-4">
-                        <label for="id_jadwal" class="block text-sm font-medium text-gray-700 mb-1" style="margin: 0.5rem;">Pilih Jadwal:</label>
-                        <select name="id_jadwal" class="p-2 border rounded-md" style="padding: 0.5rem; border-radius: 0.375rem; margin: 0.5rem;">
-                            <option disabled selected>Pilih Jadwal</option>
-                            @foreach($jadwal as $jp)
-                                <option value="{{ $jp->id }}">{{ $jp->hari }}, {{ $jp->jam_mulai }} - {{ $jp->jam_selesai }}</option>
-                            @endforeach
+                      <label for="hari" class="block text-sm font-medium text-gray-700 mb-1" style="margin: 0.5rem;">Hari:</label>
+                      <select name="hari" class="w-full p-2 border rounded-md" style="width: calc(100% - 1rem); padding: 0.5rem; border-radius: 0.375rem; margin: 0.5rem;">
+                          <option value="" disabled>Pilih Hari</option>
+                          @foreach(['senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu'] as $day)
+                              <option value="{{ $day }}" {{ $jadwalPeriksa->hari == $day ? 'selected' : '' }}>{{ ucfirst($day) }}</option>
+                          @endforeach
+                      </select>
+                    </div>
+                
+                    <div class="mb-4">
+                        <label for="jam_mulai" class="block text-sm font-medium text-gray-700 mb-1" style="margin: 0.5rem;">Jam Mulai:</label>
+                        <select name="jam_mulai" class="w-full p-2 border rounded-md" style="width: calc(100% - 1rem); padding: 0.5rem; border-radius: 0.375rem; margin: 0.5rem;">
+                            {{-- Loop untuk opsi jam mulai --}}
+                            <option value="{{ $jadwalPeriksa->jam_mulai }}">{{ $jadwalPeriksa->jam_mulai }} - Jam mulai saat ini</option>
+                            @for ($i = 0; $i < 24; $i++)
+                                @for ($j = 0; $j < 60; $j += 15)
+                                    {{-- Format jam --}}
+                                    @php
+                                        $k = 0;
+                                        $formattedHour = str_pad($i, 2, '0', STR_PAD_LEFT);
+                                        $formattedMinute = str_pad($j, 2, '0', STR_PAD_LEFT);
+                                        $formattedSecond = str_pad($k, 2, '0', STR_PAD_LEFT);
+                                        $formattedTime = $formattedHour . ':' . $formattedMinute . ':' . $formattedSecond;                                    @endphp
+                                    <option value="{{ $formattedTime }}" {{ $jadwalPeriksa->jam_mulai == $formattedTime ? 'selected' : '' }}>{{ $formattedTime }}</option>
+                                @endfor
+                            @endfor
                         </select>
                     </div>
+                
                     <div class="mb-4">
-                        <label for="keluhan" class="block text-sm font-medium text-gray-700 mb-1" style="margin: 0.5rem;">Keluhan:</label>
-                        <input name="keluhan" id="keluhan" class="w-full p-2 border rounded-md" style="width: calc(100% - 1rem); padding: 0.5rem; border-radius: 0.375rem; margin: 0.5rem;"/>
+                        <label for="jam_selesai" class="block text-sm font-medium text-gray-700 mb-1" style="margin: 0.5rem;">Jam Selesai:</label>
+                        <select name="jam_selesai" class="w-full p-2 border rounded-md" style="width: calc(100% - 1rem); padding: 0.5rem; border-radius: 0.375rem; margin: 0.5rem;">
+                            {{-- Loop untuk opsi jam selesai --}}
+                            <option value="{{ $jadwalPeriksa->jam_selesai }}">{{ $jadwalPeriksa->jam_selesai }} - Jam mulai saat ini</option>
+                            @for ($i = 0; $i < 24; $i++)
+                                @for ($j = 0; $j < 60; $j += 15)
+                                    {{-- Format jam --}}
+                                    @php
+                                        $k = 0;
+                                        $formattedHour = str_pad($i, 2, '0', STR_PAD_LEFT);
+                                        $formattedMinute = str_pad($j, 2, '0', STR_PAD_LEFT);
+                                        $formattedSecond = str_pad($k, 2, '0', STR_PAD_LEFT);
+                                        $formattedTime = $formattedHour . ':' . $formattedMinute . ':' . $formattedSecond;
+                                    @endphp
+                                    <option value="{{ $formattedTime }}" {{ $jadwalPeriksa->jam_selesai == $formattedTime ? 'selected' : '' }}>{{ $formattedTime }}</option>
+                                @endfor
+                            @endfor
+                        </select>
                     </div>
                     <div class="mb-4 flex justify-center">
-                        <button type="submit" class="btn btn-success shadow-soft-2xl rounded-lg bg-dark stroke-0 text-center xl:p-2.5" style="background-image: linear-gradient(to bottom right, #ef0488, #8624c2); color:white;">Ambil Antrian</button>
+                      <button type="submit" class="btn btn-success shadow-soft-2xl rounded-lg bg-dark stroke-0 text-center xl:p-2.5" style="background-image: linear-gradient(to bottom right, #ef0488, #8624c2); color:white;">Update Jadwal Periksa</button>
                     </div>
-                </form>
-                
-                
+                  </form>
                 </div>
             </div>
       

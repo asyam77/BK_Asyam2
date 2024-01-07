@@ -44,26 +44,24 @@
             <div class="w-full max-w-full px-3 mt-0 mb-6">
                 <div class="border-black/12.5 shadow-soft-xl relative flex min-w-0 flex-col break-words rounded-2xl border-0 border-solid bg-white bg-clip-border">
                   <div class="border-black/12.5 mb-0 rounded-t-2xl border-b-0 border-solid bg-white p-6 pb-0 mb-4">
-                    <h6><center>Ambil Jadwal Periksa</center></h6>
+                    <h6><center>Tambah Obat Baru</center></h6>
                   </div>
-
-                  <form action="{{ route('submit-daftar-poli') }}" method="GET" class="bg-white p-8 rounded-lg shadow-md">
+                  <form action="{{ route('admin-storeObat') }}" method="POST" class="bg-white p-8 rounded-lg shadow-md">
                     @csrf
                     <div class="mb-4">
-                        <label for="id_jadwal" class="block text-sm font-medium text-gray-700 mb-1" style="margin: 0.5rem;">Pilih Jadwal:</label>
-                        <select name="id_jadwal" class="p-2 border rounded-md" style="padding: 0.5rem; border-radius: 0.375rem; margin: 0.5rem;">
-                            <option disabled selected>Pilih Jadwal</option>
-                            @foreach($jadwal as $jp)
-                                <option value="{{ $jp->id }}">{{ $jp->hari }}, {{ $jp->jam_mulai }} - {{ $jp->jam_selesai }}</option>
-                            @endforeach
-                        </select>
+                        <label for="nama_obat" class="block text-sm font-medium text-gray-700 mb-1" style="margin: 0.5rem;">Nama Obat:</label>
+                        <input type="text" name="nama_obat" class="w-full p-2 border rounded-md" style="width: calc(100% - 1rem); padding: 0.5rem; border-radius: 0.375rem; margin: 0.5rem;">
                     </div>
                     <div class="mb-4">
-                        <label for="keluhan" class="block text-sm font-medium text-gray-700 mb-1" style="margin: 0.5rem;">Keluhan:</label>
-                        <input name="keluhan" id="keluhan" class="w-full p-2 border rounded-md" style="width: calc(100% - 1rem); padding: 0.5rem; border-radius: 0.375rem; margin: 0.5rem;"/>
+                        <label for="kemasan" class="block text-sm font-medium text-gray-700 mb-1" style="margin: 0.5rem;">Kemasan:</label>
+                        <input type="text" name="kemasan" class="w-full p-2 border rounded-md" style="width: calc(100% - 1rem); padding: 0.5rem; border-radius: 0.375rem; margin: 0.5rem;">
+                    </div>
+                    <div class="mb-4">
+                        <label for="harga" class="block text-sm font-medium text-gray-700 mb-1" style="margin: 0.5rem;">Harga:</label>
+                        <input type="number" name="harga" class="w-full p-2 border rounded-md" style="width: calc(100% - 1rem); padding: 0.5rem; border-radius: 0.375rem; margin: 0.5rem;">
                     </div>
                     <div class="mb-4 flex justify-center">
-                        <button type="submit" class="btn btn-success shadow-soft-2xl rounded-lg bg-dark stroke-0 text-center xl:p-2.5" style="background-image: linear-gradient(to bottom right, #ef0488, #8624c2); color:white;">Ambil Antrian</button>
+                        <button type="submit" class="btn btn-success shadow-soft-2xl rounded-lg bg-dark stroke-0 text-center xl:p-2.5" style="background-image: linear-gradient(to bottom right, #ef0488, #8624c2); color:white;">Tambah Obat</button>
                     </div>
                 </form>
                 
