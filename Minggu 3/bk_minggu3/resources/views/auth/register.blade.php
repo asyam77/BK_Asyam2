@@ -19,8 +19,8 @@
               <div class="flex flex-col w-full max-w-full px-3 mx-auto md:flex-0 shrink-0 md:w-6/12 lg:w-5/12 xl:w-4/12">
                 <div class="relative flex flex-col min-w-0 mt-32 break-words bg-transparent border-0 shadow-none rounded-2xl bg-clip-border">
                   <div class="p-6 pb-0 mb-0 bg-transparent border-b-0 rounded-t-2xl">
-                    <h3>Ayo Registrasi Disini !</h3>
-                    <p class="mb-0">Daftar akun terlebih dahulu</p>
+                    <h3>Silahkan Registrasi </h3>
+                    <p class="mb-0">isi form dibawah untuk melakukan daftar registrasi akun </p>
                   </div>
                     @if($errors->any())
                       <div class="pl-6">
@@ -132,6 +132,9 @@
         </div>
       </section>
     </main>
+    <footer style="background-color: #333; color: #fff; text-align: center; padding: 10px; margin-top: auto;">
+        <p>&copy; {{ date('Y') }} - Mohammad Asyam Arhab - A11.2020.12413</p>
+    </footer>
   </body>
   <!-- plugin for scrollbar  -->
   <script src="../assets/js/plugins/perfect-scrollbar.min.js" async></script>

@@ -18,7 +18,7 @@
                   <li class="text-sm leading-normal">
                     <a class="opacity-50 text-slate-700" href="">Halaman</a>
                   </li>
-                  <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Dashboard</li>
+                  <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Poliklinik</li>
                 </ol>
                 <h6 class="mb-0 font-bold capitalize">Hai, {{Auth::user()->nama}}</h6>
               </nav>
@@ -59,49 +59,38 @@
                         <input type="text" name="keterangan" class="w-full p-2 border rounded-md" style="width: calc(100% - 1rem); padding: 0.5rem; border-radius: 0.375rem; margin: 0.5rem;" value="{{ $poli->keterangan }}" required>
                     </div>
                     <div class="mb-4 flex justify-center">
-                        <button type="submit" class="btn btn-success shadow-soft-2xl rounded-lg bg-dark stroke-0 text-center xl:p-2.5" style="background-image: linear-gradient(to bottom right, #ef0488, #8624c2); color:white;">Simpan Perubahan</button>
+                        <button type="submit" class="btn btn-success shadow-soft-2xl rounded-lg bg-dark stroke-0 text-center xl:p-2.5" style="background-image: linear-gradient(to bottom right, #0c04ef, #8624c2); color:white;">Simpan Perubahan</button>
                     </div>
                 </form>
                 
                 </div>
             </div>
       
-            <footer class="pt-4">
-              <div class="w-full px-6 mx-auto">
-                <div class="flex flex-wrap items-center -mx-3 lg:justify-between">
-                  <div class="w-full max-w-full px-3 mt-0 mb-6 shrink-0 lg:mb-0 lg:w-1/2 lg:flex-none">
-                    <div class="text-sm leading-normal text-center text-slate-500 lg:text-left">
-                      ©
-                      <script>
-                        document.write(new Date().getFullYear() + ",");
-                      </script>
-                      dibuat oleh
-                      <a href="" class="font-semibold text-slate-700" target="_blank">Mohammad Asyam Arhab</a>
-                      untuk website yang lebih baik.
-                    </div>
-                  </div>
-                  <div class="w-full max-w-full px-3 mt-0 shrink-0 lg:w-1/2 lg:flex-none">
-                    <ul class="flex flex-wrap justify-center pl-0 mb-0 list-none lg:justify-end">
-                      <li class="nav-item">
-                        <a href="mailto:mohammadasyamarhabbaru@gmail.com" class="block px-4 pt-0 pb-1 text-sm font-normal transition-colors ease-soft-in-out text-slate-500" target="_blank">Email</a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="https://www.instagram.com/asyam77__/" class="block px-4 pt-0 pb-1 text-sm font-normal transition-colors ease-soft-in-out text-slate-500" target="_blank">Instagram</a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="https://www.facebook.com/asyam.arhab" class="block px-4 pt-0 pb-1 text-sm font-normal transition-colors ease-soft-in-out text-slate-500" target="_blank">Facebook</a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="https://api.whatsapp.com/send/?phone=628985591348&text&type=phone_number&app_absent=0" class="block px-4 pt-0 pb-1 pr-0 text-sm font-normal transition-colors ease-soft-in-out text-slate-500" target="_blank">WhatsApp</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </footer>
+            
           </div>
           <!-- end cards -->
         </main>
+        <footer style="background-color: #333; color: #fff; text-align: center; padding: 10px; position: fixed; bottom: 0; width: 100%; display: flex; justify-content: space-between; align-items: center;">
+          <div class="left-section">
+              <p style="margin: 0;">&copy; {{ date('Y') }} - Mohammad Asyam Arhab - A11.2020.12413</p>
+          </div>
+          <div class="right-section">
+              <ul class="flex flex-wrap justify-center pl-0 mb-0 list-none lg:justify-end">
+                  <li class="nav-item">
+                      <a href="mailto:mohammadasyamarhabbaru@gmail.com" class="block px-4 pt-0 pb-1 text-sm font-normal transition-colors ease-soft-in-out text-white hover:text-red-500" target="_blank">Email</a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="https://www.instagram.com/asyam77__/" class="block px-4 pt-0 pb-1 text-sm font-normal transition-colors ease-soft-in-out text-white hover:text-red-500" target="_blank">Instagram</a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="https://www.facebook.com/asyam.arhab" class="block px-4 pt-0 pb-1 text-sm font-normal transition-colors ease-soft-in-out text-white hover:text-red-500" target="_blank">Facebook</a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="https://api.whatsapp.com/send/?phone=628985591348&text&type=phone_number&app_absent=0" class="block px-4 pt-0 pb-1 pr-0 text-sm font-normal transition-colors ease-soft-in-out text-white hover:text-red-500" target="_blank">WhatsApp</a>
+                  </li>
+              </ul>
+          </div>
+        </footer>
       </body>
 
     </html>

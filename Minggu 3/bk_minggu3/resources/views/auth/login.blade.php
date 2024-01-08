@@ -19,8 +19,9 @@
               <div class="flex flex-col w-full max-w-full px-3 mx-auto md:flex-0 shrink-0 md:w-6/12 lg:w-5/12 xl:w-4/12">
                 <div class="relative flex flex-col min-w-0 mt-32 break-words bg-transparent border-0 shadow-none rounded-2xl bg-clip-border">
                   <div class="p-6 pb-0 mb-0 bg-transparent border-b-0 rounded-t-2xl">
-                    <h3>Silahkan Masuk</h3>
-                    <p class="mb-0">Masukan email dan password untuk masuk</p>
+                    <h1>POLIKLINIK</h1>
+                    <h3>Silahkan Login</h3>
+                    <p class="mb-0">Masukan email dan password Anda</p>
                     
                     @if($errors->any())
                       <div>
@@ -57,7 +58,11 @@
                   <div class="p-6 px-1 pt-0 text-center bg-transparent border-t-0 border-t-solid rounded-b-2xl lg:px-2">
                     <p class="mx-auto mb-6 leading-normal text-sm">
                       belum melakukan registrasi?
-                      <a href="../formregister" class="relative z-10 font-bold bg-clip-text">Registrasi Sekarang</a>
+                      <a href="../formregister" class="relative z-10 font-bold bg-clip-text" style="color: red;"><i>Registrasi Disini</i></a>
+                    </p>
+                    <p class="mx-auto mb-6 leading-normal text-sm">
+                          Catatan : diperlukan sebuah akun yang terregistrasi untuk memasuki website
+                          <i>jika belum punya akun maka anda tidak dapat memasuki website poliklinik !</i> 
                     </p>
                   </div>
                 </div>
@@ -72,6 +77,9 @@
         </div>
       </section>
     </main>
+    <footer style="background-color: #333; color: #fff; text-align: center; padding: 10px; margin-top: auto;">
+        <p>&copy; {{ date('Y') }} - Mohammad Asyam Arhab - A11.2020.12413</p>
+    </footer>
   </body>
   <!-- plugin for scrollbar  -->
   <script src="../assets/js/plugins/perfect-scrollbar.min.js" async></script>

@@ -93,7 +93,7 @@
                             <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">{{ $dp->no_antrian }}</td>
                             <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap">
                               <div class="flex justify-center items-center">
-                                <a href="{{ route('dokter-periksakan-daftar-periksa', $dp->id) }}" class="btn btn-warning mr-2 py-1 px-4" style="color:#b017ab">Periksa Pasien</a>
+                                <a href="{{ route('dokter-periksakan-daftar-periksa', $dp->id) }}" class="btn btn-warning mr-2 py-1 px-4" style="color:#b2b81c">Periksa Pasien</a>
                                 <form method="POST" action="{{ route('dokter-destroy-daftar-poli', ['id' => $dp->id]) }}" style="display: inline;">
                                   @csrf
                                   @method('DELETE')
@@ -112,42 +112,31 @@
 
         </div>
   
-        <footer class="pt-4">
-          <div class="w-full px-6 mx-auto">
-            <div class="flex flex-wrap items-center -mx-3 lg:justify-between">
-              <div class="w-full max-w-full px-3 mt-0 mb-6 shrink-0 lg:mb-0 lg:w-1/2 lg:flex-none">
-                <div class="text-sm leading-normal text-center text-slate-500 lg:text-left">
-                  ©
-                  <script>
-                    document.write(new Date().getFullYear() + ",");
-                  </script>
-                  dibuat oleh
-                  <a href="" class="font-semibold text-slate-700" target="_blank">Mohammad Asyam Arhab</a>
-                  untuk website yang lebih baik.
-                </div>
-              </div>
-              <div class="w-full max-w-full px-3 mt-0 shrink-0 lg:w-1/2 lg:flex-none">
-                    <ul class="flex flex-wrap justify-center pl-0 mb-0 list-none lg:justify-end">
-                      <li class="nav-item">
-                        <a href="mailto:mohammadasyamarhabbaru@gmail.com" class="block px-4 pt-0 pb-1 text-sm font-normal transition-colors ease-soft-in-out text-slate-500" target="_blank">Email</a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="https://www.instagram.com/asyam77__/" class="block px-4 pt-0 pb-1 text-sm font-normal transition-colors ease-soft-in-out text-slate-500" target="_blank">Instagram</a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="https://www.facebook.com/asyam.arhab" class="block px-4 pt-0 pb-1 text-sm font-normal transition-colors ease-soft-in-out text-slate-500" target="_blank">Facebook</a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="https://api.whatsapp.com/send/?phone=628985591348&text&type=phone_number&app_absent=0" class="block px-4 pt-0 pb-1 pr-0 text-sm font-normal transition-colors ease-soft-in-out text-slate-500" target="_blank">WhatsApp</a>
-                      </li>
-                    </ul>
-                </div>
-            </div>
-          </div>
-        </footer>
+        
       </div>
       <!-- end cards -->
     </main>
+    <footer style="background-color: #333; color: #fff; text-align: center; padding: 10px; position: fixed; bottom: 0; width: 100%; display: flex; justify-content: space-between; align-items: center;">
+          <div class="left-section">
+              <p style="margin: 0;">&copy; {{ date('Y') }} - Mohammad Asyam Arhab - A11.2020.12413</p>
+          </div>
+          <div class="right-section">
+              <ul class="flex flex-wrap justify-center pl-0 mb-0 list-none lg:justify-end">
+                  <li class="nav-item">
+                      <a href="mailto:mohammadasyamarhabbaru@gmail.com" class="block px-4 pt-0 pb-1 text-sm font-normal transition-colors ease-soft-in-out text-white hover:text-red-500" target="_blank">Email</a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="https://www.instagram.com/asyam77__/" class="block px-4 pt-0 pb-1 text-sm font-normal transition-colors ease-soft-in-out text-white hover:text-red-500" target="_blank">Instagram</a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="https://www.facebook.com/asyam.arhab" class="block px-4 pt-0 pb-1 text-sm font-normal transition-colors ease-soft-in-out text-white hover:text-red-500" target="_blank">Facebook</a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="https://api.whatsapp.com/send/?phone=628985591348&text&type=phone_number&app_absent=0" class="block px-4 pt-0 pb-1 pr-0 text-sm font-normal transition-colors ease-soft-in-out text-white hover:text-red-500" target="_blank">WhatsApp</a>
+                  </li>
+              </ul>
+          </div>
+      </footer>
   </body>
   <!-- plugin for charts  -->
   <script src="./assets/js/plugins/chartjs.min.js" async></script>
